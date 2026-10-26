@@ -375,3 +375,148 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+/* Homepage colors and layout fix */
+
+body {
+    background-color: #f0f8f4;
+}
+
+.topbar {
+    background-color: #056044;
+    color: white;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.site-header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 5%;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+    color: #056044;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand small {
+    display: block;
+}
+
+.brand-mark {
+    background-color: #087f5b;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.main-nav a {
+    color: #263238;
+}
+
+.hero {
+    background: linear-gradient(135deg, #d8f3e4, #f4fff8);
+    border-radius: 16px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.soft-bg {
+    background-color: #e4f5eb;
+}
+
+.category-grid,
+.steps-grid,
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.category-card,
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #d5e9dd;
+    border-radius: 12px;
+    color: #087f5b;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.prescription-banner {
+    background-color: #087f5b;
+    color: white;
+    padding: 35px;
+    border-radius: 14px;
+}
+
+.prescription-banner h2 {
+    color: white;
+}
+
+.site-footer {
+    background-color: #183b31;
+    color: white;
+    padding: 35px 5%;
+}
+
+.site-footer a {
+    color: white;
+    display: block;
+    margin: 6px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.site-footer h3 {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+    }
+
+    .main-nav {
+        justify-content: center;
+    }
+
+    .topbar {
+        justify-content: center;
+    }
+}
