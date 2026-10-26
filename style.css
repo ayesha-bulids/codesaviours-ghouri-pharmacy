@@ -319,3 +319,59 @@ main {
         gap: 10px;
     }
 }
+
+/* Ghouri Pharmacy - Background Colors */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8f4;
+    color: #263238;
+}
+
+header {
+    background-color: #087f5b;
+    color: white;
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    color: #ffe082;
+}
+
+section,
+main {
+    padding: 30px 20px;
+}
+
+h1, h2, h3 {
+    color: #087f5b;
+}
+
+button,
+.btn {
+    background-color: #087f5b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #056044;
+}
+
+footer {
+    background-color: #174c3c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
