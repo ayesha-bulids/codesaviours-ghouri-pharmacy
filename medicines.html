@@ -1,124 +1,135 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicines | Ghouri Pharmacy</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Medicines - Ghouri Pharmacy</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="topbar">
-        <span>Phone: [TBD]</span>
-        <span>Opening Hours: [TBD]</span>
-        <span>Delivery: [Confirm with mentor]</span>
-    </div>
-
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <span class="brand-mark">GP</span>
-            <span class="brand-text">
-                <strong>Ghouri Pharmacy</strong>
-                <small>Your Trusted Neighborhood Pharmacy</small>
-            </span>
-        </a>
-
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
-
-        <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="medicines.html" class="active">Medicines</a>
-            <a href="prescription.html">Prescription</a>
-            <a href="contact.html">Contact</a>
-            <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="page-banner">
-            <p class="eyebrow">OUR CATALOG</p>
-            <h1>Medicines and Products</h1>
-            <p>Browse the catalog. Verified product information will be added after mentor approval.</p>
-        </section>
-
-        <section class="section container">
-            <form class="medicine-search" id="medicine-search-form">
-                <label for="search-input">Search catalog</label>
-                <input
-                    type="search"
-                    id="search-input"
-                    name="search"
-                    placeholder="Search by product name..."
-                >
-
-                <label for="category-filter">Choose category</label>
-                <select id="category-filter" name="category">
-                    <option value="">All categories</option>
-                    <option value="Medicines">Medicines</option>
-                    <option value="Vitamins">Vitamins and Supplements</option>
-                    <option value="Baby Care">Baby Care</option>
-                    <option value="Personal Care">Personal Care</option>
-                    <option value="Skin Care">Skin Care</option>
-                    <option value="Diabetes Care">Diabetes Care</option>
-                    <option value="Medical Devices">Medical Devices</option>
-                    <option value="First Aid">First Aid</option>
-                </select>
-
-                <button type="submit" class="btn-primary">Search</button>
-            </form>
-
-            <div id="medicine-list" class="product-grid">
-                <article class="info-card">
-                    <i class="fa-solid fa-box-open"></i>
-                    <h2>Catalog Awaiting Verification</h2>
-                    <p>
-                        Product names, prices, categories and other details
-                        will be added from the mentor's approved list.
-                    </p>
-                </article>
-            </div>
-
-            <p class="notice">
-                This website does not provide medical advice. Ask a qualified
-                healthcare professional about medicine use. Prescription
-                medicines require a valid prescription where applicable.
-            </p>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div>
-                <h3>Ghouri Pharmacy</h3>
-                <p>Official store details: [TBD]</p>
-            </div>
-            <div>
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="medicines.html">Medicines</a>
-                <a href="prescription.html">Prescription</a>
-                <a href="contact.html">Contact</a>
-                <a href="cart.html">Cart</a>
-            </div>
-            <div>
-                <h3>Contact</h3>
-                <p>Phone: [TBD]</p>
-                <p>Address: [TBD]</p>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-none d-md-block">
+                    <i class="fa-regular fa-clock me-1"></i> Mon-Sat: 9AM - 10PM | Sun: 10AM - 6PM
+                </div>
+                <div>
+                    <a href="tel:+92XXXXXXXXXX" class="phone">
+                        <i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX
+                    </a>
+                    <span class="mx-2 d-none d-sm-inline">|</span>
+                    <span class="d-none d-sm-inline">
+                        <i class="fa-solid fa-truck me-1"></i> Home Delivery Available
+                    </span>
+                </div>
             </div>
         </div>
-        <p class="copyright">&copy; 2026 Ghouri Pharmacy. All rights reserved.</p>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--primary); font-size: 1.4rem;">
+                <i class="fa-solid fa-mortar-pestle"></i> Ghouri Pharmacy
+            </a>
+
+            <div class="d-flex align-items-center">
+                <a href="cart.html" class="cart-icon me-3">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="medicines.html">Medicines</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prescription.html">Upload Prescription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Medicines</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Medicines</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h3>Medicines Catalog</h3>
+            <p class="text-muted">This page will be completed in Week 4</p>
+            <p>[Search, filters and product listing will come here]</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5>Ghouri Pharmacy</h5>
+                    <p class="small">Your trusted neighborhood pharmacy for genuine medicines and health products.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="medicines.html">Medicines</a>
+                    <a href="prescription.html">Upload Prescription</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <p class="small mb-1">Mon - Sat: 9AM - 10PM</p>
+                    <p class="small">Sunday: 10AM - 6PM</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p class="small mb-1"><i class="fa-solid fa-location-dot me-1"></i> [TBD Address]</p>
+                    <p class="small mb-1"><i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX</p>
+                    <p class="small mb-1"><i class="fa-brands fa-whatsapp me-1"></i> +92 XXX XXXXXXX</p>
+                    <p class="small"><i class="fa-solid fa-envelope me-1"></i> [TBD Email]</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-1 small">Prescription medicines are given only against a valid prescription.</p>
+                <p class="mb-0 small">© 2026 Ghouri Pharmacy. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <a href="https://wa.me/92XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <div class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/products.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>

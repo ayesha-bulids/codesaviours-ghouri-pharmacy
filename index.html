@@ -1,296 +1,361 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghouri Pharmacy</title>
 
-    <title>Home | Ghouri Pharmacy</title>
-    <meta name="description" content="Ghouri Pharmacy website. View pharmacy information and browse the medicine catalog.">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
 </head>
-
 <body>
 
-    <div class="topbar">
-        <span><i class="fa-solid fa-phone"></i> Phone: [TBD]</span>
-        <span><i class="fa-regular fa-clock"></i> Opening Hours: [TBD]</span>
-        <span>Delivery availability: [Confirm with mentor]</span>
-    </div>
-
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <span class="brand-mark">GP</span>
-            <span class="brand-text">
-                <strong>Ghouri Pharmacy</strong>
-                <small>Your Trusted Neighborhood Pharmacy</small>
-            </span>
-        </a>
-
-        <button class="menu-toggle"
-                type="button"
-                aria-label="Open navigation"
-                aria-expanded="false">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <nav class="main-nav">
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="medicines.html">Medicines</a>
-            <a href="prescription.html">Prescription</a>
-            <a href="contact.html">Contact</a>
-            <a href="cart.html" class="cart-link">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Cart (<span id="cart-count">0</span>)
-            </a>
-        </nav>
-    </header>
-
-    <main>
-
-        <section class="hero">
-            <div class="hero-content">
-                <p class="eyebrow">WELCOME TO GHOURI PHARMACY</p>
-
-                <h1>Your Trusted Neighborhood Pharmacy</h1>
-
-                <p>
-                    Explore our pharmacy information and medicine catalog.
-                    Verified products and store details will be added
-                    after confirmation by the mentor.
-                </p>
-
-                <form action="medicines.html" method="get" class="search-form">
-                    <label class="visually-hidden" for="medicine-search">
-                        Search medicines
-                    </label>
-
-                    <input
-                        type="search"
-                        id="medicine-search"
-                        name="search"
-                        placeholder="Search medicines..."
-                    >
-
-                    <button type="submit" class="btn-primary">
-                        Search
-                    </button>
-                </form>
-
-                <div class="hero-actions">
-                    <a href="medicines.html" class="btn-primary">
-                        Browse Medicines
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-none d-md-block">
+                    <i class="fa-regular fa-clock me-1"></i> Mon-Sat: 9AM - 10PM | Sun: 10AM - 6PM
+                </div>
+                <div>
+                    <a href="tel:+92XXXXXXXXXX" class="phone">
+                        <i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX
                     </a>
-
-                    <a href="prescription.html" class="btn-secondary">
-                        Prescription Information
-                    </a>
+                    <span class="mx-2 d-none d-sm-inline">|</span>
+                    <span class="d-none d-sm-inline">
+                        <i class="fa-solid fa-truck me-1"></i> Home Delivery Available
+                    </span>
                 </div>
-            </div>
-
-            <div class="hero-illustration">
-                <i class="fa-solid fa-house-medical"></i>
-                <p>Pharmacy image: [TBD]</p>
-            </div>
-        </section>
-
-        <section class="section container">
-            <div class="section-heading">
-                <p class="eyebrow">EXPLORE OUR CATALOG</p>
-                <h2>Shop by Category</h2>
-                <p>Explore the categories available in our catalog.</p>
-            </div>
-
-            <div class="category-grid">
-                <a href="medicines.html?category=Medicines" class="category-card">
-                    <i class="fa-solid fa-pills"></i>
-                    <span>Medicines</span>
-                </a>
-
-                <a href="medicines.html?category=Vitamins" class="category-card">
-                    <i class="fa-solid fa-capsules"></i>
-                    <span>Vitamins and Supplements</span>
-                </a>
-
-                <a href="medicines.html?category=Baby%20Care" class="category-card">
-                    <i class="fa-solid fa-baby"></i>
-                    <span>Baby Care</span>
-                </a>
-
-                <a href="medicines.html?category=Personal%20Care" class="category-card">
-                    <i class="fa-solid fa-pump-soap"></i>
-                    <span>Personal Care</span>
-                </a>
-
-                <a href="medicines.html?category=Skin%20Care" class="category-card">
-                    <i class="fa-solid fa-hand-sparkles"></i>
-                    <span>Skin Care</span>
-                </a>
-
-                <a href="medicines.html?category=Diabetes%20Care" class="category-card">
-                    <i class="fa-solid fa-droplet"></i>
-                    <span>Diabetes Care</span>
-                </a>
-
-                <a href="medicines.html?category=Medical%20Devices" class="category-card">
-                    <i class="fa-solid fa-stethoscope"></i>
-                    <span>Medical Devices</span>
-                </a>
-
-                <a href="medicines.html?category=First%20Aid" class="category-card">
-                    <i class="fa-solid fa-kit-medical"></i>
-                    <span>First Aid</span>
-                </a>
-            </div>
-        </section>
-
-        <section class="section soft-bg">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">SIMPLE STEPS</p>
-                    <h2>How to Order</h2>
-                </div>
-
-                <div class="steps-grid">
-                    <article class="info-card">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <h3>1. Browse</h3>
-                        <p>Explore the available catalog.</p>
-                    </article>
-
-                    <article class="info-card">
-                        <i class="fa-solid fa-file-prescription"></i>
-                        <h3>2. Check Prescription Requirements</h3>
-                        <p>Visit the prescription page for information.</p>
-                    </article>
-
-                    <article class="info-card">
-                        <i class="fa-solid fa-store"></i>
-                        <h3>3. Confirm with Pharmacy</h3>
-                        <p>Confirm product availability and order arrangements directly.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section container">
-            <div class="section-heading">
-                <p class="eyebrow">OUR CATALOG</p>
-                <h2>Popular Products</h2>
-                <p>Verified product information will be added after mentor approval.</p>
-            </div>
-
-            <div id="popular-products" class="product-grid">
-                <p class="placeholder-note">
-                    Product names, details and prices are awaiting confirmation.
-                </p>
-            </div>
-        </section>
-
-        <section class="prescription-banner container">
-            <div>
-                <h2>Have a Prescription?</h2>
-                <p>Read the instructions on our prescription information page.</p>
-            </div>
-
-            <a href="prescription.html" class="btn-light">
-                View Instructions
-            </a>
-        </section>
-
-        <section class="section container">
-            <div class="section-heading">
-                <h2>Why Choose Us?</h2>
-                <p>Pharmacy services will be described after confirmation by the mentor.</p>
-            </div>
-
-            <div class="steps-grid">
-                <article class="info-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Product Information</h3>
-                    <p>Verified details: [Confirm with mentor]</p>
-                </article>
-
-                <article class="info-card">
-                    <i class="fa-solid fa-user-doctor"></i>
-                    <h3>Pharmacy Services</h3>
-                    <p>Service details: [Confirm with mentor]</p>
-                </article>
-
-                <article class="info-card">
-                    <i class="fa-solid fa-truck"></i>
-                    <h3>Delivery Options</h3>
-                    <p>Availability: [Confirm with mentor]</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section soft-bg">
-            <div class="container section-heading">
-                <h2>Store Timings and Location</h2>
-                <p>Address: [TBD — confirm with mentor]</p>
-                <p>Opening hours: [TBD — confirm with mentor]</p>
-                <a href="contact.html" class="btn-primary">Contact Information</a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div>
-                <h3>Ghouri Pharmacy</h3>
-                <p>
-                    Pharmacy information and catalog.
-                    Official store details will be added after confirmation.
-                </p>
-            </div>
-
-            <div>
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="medicines.html">Medicines</a>
-                <a href="prescription.html">Prescription</a>
-                <a href="contact.html">Contact</a>
-                <a href="cart.html">Cart</a>
-            </div>
-
-            <div>
-                <h3>Store Information</h3>
-                <p>Address: [TBD]</p>
-                <p>Phone: [TBD]</p>
-                <p>Opening hours: [TBD]</p>
             </div>
         </div>
+    </div>
 
-        <p class="prescription-notice">
-            Prescription medicines require a valid prescription where applicable.
-        </p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--primary); font-size: 1.4rem;">
+                <i class="fa-solid fa-mortar-pestle"></i> Ghouri Pharmacy
+            </a>
 
-        <p class="copyright">
-            &copy; 2026 Ghouri Pharmacy. All rights reserved.
-        </p>
+            <div class="d-flex align-items-center">
+                <a href="cart.html" class="cart-icon me-3">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="medicines.html">Medicines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prescription.html">Upload Prescription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container" data-aos="fade-up">
+            <h1>Your Trusted Neighborhood Pharmacy</h1>
+            <p>Genuine medicines with fast home delivery</p>
+
+            <form action="medicines.html" method="get" class="search-box">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search medicines...">
+                    <button class="btn text-white" type="submit"><i class="fa-solid fa-search"></i></button>
+                </div>
+            </form>
+
+            <div class="mt-3">
+                <a href="medicines.html" class="btn btn-primary-custom me-2">Browse Medicines</a>
+                <a href="prescription.html" class="btn btn-outline-custom" style="border-color:white;color:white;">Upload Prescription</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Shop by Category</h2>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Medicines" class="category-card d-block">
+                        <i class="fa-solid fa-pills"></i>
+                        <h5>Medicines</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Vitamins" class="category-card d-block">
+                        <i class="fa-solid fa-tablets"></i>
+                        <h5>Vitamins & Supplements</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Baby Care" class="category-card d-block">
+                        <i class="fa-solid fa-baby"></i>
+                        <h5>Baby Care</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Personal Care" class="category-card d-block">
+                        <i class="fa-solid fa-pump-soap"></i>
+                        <h5>Personal Care</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Skin Care" class="category-card d-block">
+                        <i class="fa-solid fa-spa"></i>
+                        <h5>Skin Care</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Diabetes Care" class="category-card d-block">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h5>Diabetes Care</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=Medical Devices" class="category-card d-block">
+                        <i class="fa-solid fa-stethoscope"></i>
+                        <h5>Medical Devices</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <a href="medicines.html?category=First Aid" class="category-card d-block">
+                        <i class="fa-solid fa-kit-medical"></i>
+                        <h5>First Aid</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>How to Order</h2>
+            </div>
+            <div class="row text-center g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="display-6 fw-bold mb-2" style="color: var(--primary);">1</div>
+                    <h5>Search or Upload Prescription</h5>
+                    <p class="text-muted">Find medicines or upload your prescription</p>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="display-6 fw-bold mb-2" style="color: var(--primary);">2</div>
+                    <h5>Order on WhatsApp</h5>
+                    <p class="text-muted">Confirm your order on WhatsApp</p>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="display-6 fw-bold mb-2" style="color: var(--primary);">3</div>
+                    <h5>Get Delivered or Pickup</h5>
+                    <p class="text-muted">Home delivery or collect from store</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Products -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Popular Products</h2>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=Medicine" alt="Product">
+                        <div class="card-body">
+                            <h6>Panadol 500mg</h6>
+                            <small class="text-muted">20 Tablets</small>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="price">Rs. [TBD]</span>
+                                <a href="medicines.html" class="btn btn-sm btn-primary-custom">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=Medicine" alt="Product">
+                        <div class="card-body">
+                            <h6>Disprin</h6>
+                            <small class="text-muted">10 Tablets</small>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="price">Rs. [TBD]</span>
+                                <a href="medicines.html" class="btn btn-sm btn-primary-custom">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=Medicine" alt="Product">
+                        <div class="card-body">
+                            <h6>Vitamin C</h6>
+                            <small class="text-muted">20 Tablets</small>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="price">Rs. [TBD]</span>
+                                <a href="medicines.html" class="btn btn-sm btn-primary-custom">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=Medicine" alt="Product">
+                        <div class="card-body">
+                            <h6>Augmentin 625mg</h6>
+                            <small class="text-muted">6 Tablets</small>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="price">Rs. [TBD]</span>
+                                <a href="medicines.html" class="btn btn-sm btn-primary-custom">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Prescription Banner -->
+    <section class="py-5" style="background-color: var(--primary);">
+        <div class="container text-center text-white" data-aos="zoom-in">
+            <h2 class="text-white">Have a Prescription?</h2>
+            <p class="mb-3">Upload it and we will prepare your order</p>
+            <a href="prescription.html" class="btn btn-light">Upload Prescription</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <i class="fa-solid fa-shield-halved fa-2x mb-2" style="color: var(--primary);"></i>
+                    <h6>Genuine Medicines</h6>
+                    <p class="small text-muted">From trusted suppliers</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <i class="fa-solid fa-user-doctor fa-2x mb-2" style="color: var(--primary);"></i>
+                    <h6>Qualified Pharmacist</h6>
+                    <p class="small text-muted">Expert advice</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <i class="fa-solid fa-temperature-half fa-2x mb-2" style="color: var(--primary);"></i>
+                    <h6>Proper Storage</h6>
+                    <p class="small text-muted">Right temperature</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <i class="fa-solid fa-truck fa-2x mb-2" style="color: var(--primary);"></i>
+                    <h6>Home Delivery</h6>
+                    <p class="small text-muted">Fast & reliable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timings -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-up">
+                    <h4 class="mb-3">Store Timings</h4>
+                    <p>Monday - Saturday: 9:00 AM - 10:00 PM</p>
+                    <p>Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <h4 class="mb-3">Location</h4>
+                    <p>[TBD - Store Address]</p>
+                    <!-- Map baad mein add karenge -->
+                    <div class="bg-light border rounded p-5 text-center text-muted">
+                        Google Map will be added here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h5>Ghouri Pharmacy</h5>
+                    <p class="small">Your trusted neighborhood pharmacy for genuine medicines and health products.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="medicines.html">Medicines</a>
+                    <a href="prescription.html">Upload Prescription</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <p class="small mb-1">Mon - Sat: 9AM - 10PM</p>
+                    <p class="small">Sunday: 10AM - 6PM</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p class="small mb-1"><i class="fa-solid fa-location-dot me-1"></i> [TBD Address]</p>
+                    <p class="small mb-1"><i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX</p>
+                    <p class="small mb-1"><i class="fa-brands fa-whatsapp me-1"></i> +92 XXX XXXXXXX</p>
+                    <p class="small"><i class="fa-solid fa-envelope me-1"></i> [TBD Email]</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="mb-1 small">Prescription medicines are given only against a valid prescription.</p>
+                <p class="mb-0 small">© 2026 Ghouri Pharmacy. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <button class="back-to-top" type="button" aria-label="Back to top">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/92XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
         <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/products.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
-
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>
