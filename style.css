@@ -1,3 +1,4 @@
+
 /* ===== CSS Variables ===== */
 :root {
     --primary: #0d9488;
@@ -9,10 +10,8 @@
     --gray: #64748b;
     --white: #ffffff;
     --danger: #ef4444;
-    
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
-    
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     --radius: 12px;
 }
@@ -72,8 +71,20 @@ img {
     padding: 12px 0;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary) !important;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
 .navbar-brand img {
-    height: 45px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .nav-link {
@@ -150,10 +161,11 @@ img {
     color: white;
 }
 
-/* ===== Hero Section ===== */
+/* ===== Home Hero ===== */
 .hero-section {
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
-                url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1600') center/cover no-repeat;
+    background:
+        linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+        url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1600') center/cover no-repeat;
     color: white;
     padding: 100px 0 80px;
     text-align: center;
@@ -191,7 +203,7 @@ img {
     border: none;
 }
 
-/* ===== Section Common ===== */
+/* ===== Common Sections ===== */
 .section-title {
     text-align: center;
     margin-bottom: 40px;
@@ -233,7 +245,7 @@ img {
     margin: 0;
 }
 
-/* ===== Product Card ===== */
+/* ===== Product Cards ===== */
 .product-card {
     background: white;
     border-radius: var(--radius);
@@ -263,6 +275,67 @@ img {
     font-size: 1.1rem;
 }
 
+/* ===== Page Banner ===== */
+.page-banner {
+    background:
+        linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+        url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600') center/cover no-repeat;
+    color: white;
+    padding: 80px 0 50px;
+    text-align: center;
+}
+
+.page-banner h1 {
+    color: white;
+    font-size: 2.4rem;
+}
+
+.breadcrumb {
+    justify-content: center;
+    background: transparent;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item a {
+    color: #cbd5e1;
+}
+
+.breadcrumb-item.active {
+    color: white;
+}
+
+/* ===== About Page ===== */
+.about-story img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.about-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.gallery-section {
+    background: white;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.02);
+}
+
 /* ===== Footer ===== */
 footer {
     background: var(--secondary);
@@ -284,6 +357,14 @@ footer a {
 
 footer a:hover {
     color: var(--primary);
+}
+
+.footer-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: white;
 }
 
 .footer-bottom {
@@ -334,40 +415,12 @@ footer a:hover {
     cursor: pointer;
 }
 
-/* ===== Page Banner ===== */
-.page-banner {
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
-                url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600') center/cover;
-    color: white;
-    padding: 80px 0 50px;
-    text-align: center;
-}
-
-.page-banner h1 {
-    color: white;
-    font-size: 2.4rem;
-}
-
-.breadcrumb {
-    justify-content: center;
-    background: transparent;
-    margin-bottom: 0;
-}
-
-.breadcrumb-item a {
-    color: #94a3b8;
-}
-
-.breadcrumb-item.active {
-    color: white;
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 991px) {
     .hero-section h1 {
         font-size: 2rem;
     }
-    
+
     .nav-link.active::after {
         display: none;
     }
@@ -377,35 +430,21 @@ footer a:hover {
     .hero-section {
         padding: 70px 0 50px;
     }
-    
+
     .hero-section h1 {
         font-size: 1.7rem;
     }
-}\.gallery {
-    padding: 50px 8%;
-    text-align: center;
-}
 
-.gallery h2 {
-    color: #245b3d;
-    margin-bottom: 30px;
-}
+    .navbar-brand {
+        font-size: 1rem;
+    }
 
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+    .navbar-brand img {
+        width: 42px;
+        height: 42px;
+    }
 
-.gallery-container img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-    .gallery-container {
-        grid-template-columns: 1fr;
+    .gallery-container img {
+        height: 220px;
     }
 }
