@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -76,13 +76,81 @@
     </section>
 
     <!-- Content -->
-    <section class="py-5">
-        <div class="container text-center">
-            <h3>Medicines Catalog</h3>
-            <p class="text-muted">This page will be completed in Week 4</p>
-            <p>[Search, filters and product listing will come here]</p>
+    
+
+<section class="py-5">
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="text-center mb-4">
+            <h2>Our Medicines</h2>
+            <p class="text-muted">
+                Find the medicines and healthcare products you need.
+            </p>
         </div>
-    </section>
+
+        <!-- Search and Sort -->
+        <div class="row g-3 mb-4">
+
+            <div class="col-md-6">
+                <input
+                    type="text"
+                    id="medicineSearch"
+                    class="form-control"
+                    placeholder="Search medicines..."
+                >
+            </div>
+
+            <div class="col-md-3">
+                <select id="categoryFilter" class="form-select">
+                    <option value="All">All Categories</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select id="sortFilter" class="form-select">
+                    <option value="default">Default</option>
+                    <option value="name-asc">Name (A to Z)</option>
+                    <option value="price-low">Price (Low to High)</option>
+                    <option value="price-high">Price (High to Low)</option>
+                </select>
+            </div>
+
+        </div>
+
+        
+        <div class="row">
+
+        
+            <div class="col-lg-3 mb-4">
+                <h5 class="mb-3">Categories</h5>
+
+                <div id="categoryList">
+                    <button class="btn btn-outline-primary w-100 mb-2 active"
+                        type="button" data-category="All">
+                        All Medicines
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="col-lg-9">
+
+                <p id="resultsCount" class="text-muted mb-3">
+                    Loading products...
+                </p>
+
+                <div id="productGrid" class="row g-4">
+                    <!-- Products will appear here using JavaScript -->
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer>
@@ -129,7 +197,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+   <script src="js/products.js"></script>
+<script src="js/medicines.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    AOS.init({ duration: 800, once: true });
+</script>
 </body>
 </html>
