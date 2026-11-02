@@ -96,9 +96,44 @@ function renderProducts(list) {
 
     });
 }
-
-// Display product categories
 function renderCategories() {
+
+    // All Medicines button
+    const allButton = categoryList.querySelector('[data-category="All"]');
+
+    allButton.addEventListener("click", function () {
+        renderProducts(allProducts);
+    });
+
+    const categories = [
+        ...new Set(allProducts.map(product => product.category))
+    ];
+
+    categories.forEach(category => {
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "btn btn-outline-primary w-100 mb-2";
+        button.textContent = category;
+        button.dataset.category = category;
+
+        // Category click functionality
+        button.addEventListener("click", function () {
+
+            const selectedCategory = this.dataset.category;
+
+            const filteredProducts = allProducts.filter(product =>
+                product.category === selectedCategory
+            );
+
+            renderProducts(filteredProducts);
+        });
+
+        categoryList.appendChild(button);
+
+    });
+}
 
     const categories = [
         ...new Set(allProducts.map(product => product.category))
