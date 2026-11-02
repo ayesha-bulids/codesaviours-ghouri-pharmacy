@@ -113,6 +113,17 @@ function renderCategories() {
         button.textContent = category;
 
         button.dataset.category = category;
+        button.addEventListener("click", function () {
+    const selectedCategory = this.dataset.category;
+
+    const filteredProducts = selectedCategory === "All"
+        ? allProducts
+        : allProducts.filter(product =>
+            product.category === selectedCategory
+        );
+
+    renderProducts(filteredProducts);
+});
 
         categoryList.appendChild(button);
 
