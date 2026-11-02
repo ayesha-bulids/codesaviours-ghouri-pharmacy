@@ -1,32 +1,35 @@
 
-// Get the product grid and results count elements
+// Get HTML elements
 const productGrid = document.getElementById("productGrid");
 const resultsCount = document.getElementById("resultsCount");
-
-// Get the category list element
 const categoryList = document.getElementById("categoryList");
+const medicineSearch = document.getElementById("medicineSearch");
+const categoryFilter = document.getElementById("categoryFilter");
+const sortFilter = document.getElementById("sortFilter");
 
 // Store all products
-let allProducts = products;
+const allProducts = Array.isArray(products) ? products : [];
 
-// Display product cards
+// Current selected category
+let selectedCategory = "All";
+
+// Display products
 function renderProducts(list) {
 
     productGrid.innerHTML = "";
 
     resultsCount.textContent = `Showing ${list.length} products`;
 
-    // Show message if no products exist
     if (list.length === 0) {
         productGrid.innerHTML = `
             <div class="col-12 text-center py-5">
                 <h5>No medicines available.</h5>
+                <p class="text-muted">Try another search or category.</p>
             </div>
         `;
         return;
     }
 
-    // Create a card for every product
     list.forEach(product => {
 
         const stockStatus = product.inStock
@@ -61,7 +64,7 @@ function renderProducts(list) {
                     </p>
 
                     <h5 class="text-primary mb-2">
-                        Rs. ${Number(product.price).toLocaleString("en-PK")}
+                        Rs. ${Number(product.price || 0).toLocaleString("en-PK")}
                     </h5>
 
                     <div>
@@ -93,24 +96,42 @@ function renderProducts(list) {
         }
 
         productGrid.appendChild(card);
-
     });
 }
+
+
+// Create category buttons and dropdown options
 function renderCategories() {
 
-    // All Medicines button
-    const allButton = categoryList.querySelector('[data-category="All"]');
+    categoryList.innerHTML = "";
+
+    categoryFilter.innerHTML = `
+        <option value="All">All Categories</option>
+    `;
+
+    const allButton = document.createElement("button");
+
+    allButton.type = "button";
+    allButton.className = "btn btn-outline-primary w-100 mb-2 active";
+    allButton.textContent = "All Medicines";
+    allButton.dataset.category = "All";
 
     allButton.addEventListener("click", function () {
-        renderProducts(allProducts);
+        selectedCategory = "All";
+        categoryFilter.value = "All";
+        updateActiveCategory();
+        filterProducts();
     });
 
+    categoryList.appendChild(allButton);
+
     const categories = [
-        ...new Set(allProducts.map(product => product.category))
+        ...new Set(allProducts.map(product => product.category).filter(Boolean))
     ];
 
     categories.forEach(category => {
 
+        // Sidebar category button
         const button = document.createElement("button");
 
         button.type = "button";
@@ -118,53 +139,113 @@ function renderCategories() {
         button.textContent = category;
         button.dataset.category = category;
 
-        // Category click functionality
         button.addEventListener("click", function () {
 
-            const selectedCategory = this.dataset.category;
+            selectedCategory = category;
+            categoryFilter.value = category;
 
-            const filteredProducts = allProducts.filter(product =>
-                product.category === selectedCategory
-            );
-
-            renderProducts(filteredProducts);
+            updateActiveCategory();
+            filterProducts();
         });
 
         categoryList.appendChild(button);
 
+        // Dropdown category option
+        const option = document.createElement("option");
+
+        option.value = category;
+        option.textContent = category;
+
+        categoryFilter.appendChild(option);
     });
 }
 
-    const categories = [
-        ...new Set(allProducts.map(product => product.category))
-    ];
 
-    categories.forEach(category => {
+// Highlight selected category button
+function updateActiveCategory() {
 
-        const button = document.createElement("button");
+    const buttons = categoryList.querySelectorAll("button");
 
-        button.type = "button";
-        button.className = "btn btn-outline-primary w-100 mb-2";
-        button.textContent = category;
+    buttons.forEach(button => {
 
-        button.dataset.category = category;
-        button.addEventListener("click", function () {
-    const selectedCategory = this.dataset.category;
+        button.classList.toggle(
+            "active",
+            button.dataset.category === selectedCategory
+        );
+    });
+}
 
-    const filteredProducts = selectedCategory === "All"
-        ? allProducts
-        : allProducts.filter(product =>
+
+// Search, filter and sort products
+function filterProducts() {
+
+    let filteredProducts = [...allProducts];
+
+    // Category filter
+    if (selectedCategory !== "All") {
+
+        filteredProducts = filteredProducts.filter(product =>
             product.category === selectedCategory
         );
+    }
+
+    // Search filter
+    const searchText = medicineSearch.value.toLowerCase().trim();
+
+    if (searchText !== "") {
+
+        filteredProducts = filteredProducts.filter(product =>
+
+            product.name.toLowerCase().includes(searchText) ||
+            (product.category || "").toLowerCase().includes(searchText) ||
+            (product.description || "").toLowerCase().includes(searchText)
+        );
+    }
+
+    // Sorting
+    const sortValue = sortFilter.value;
+
+    if (sortValue === "name-asc") {
+
+        filteredProducts.sort((a, b) =>
+            a.name.localeCompare(b.name)
+        );
+
+    } else if (sortValue === "price-low") {
+
+        filteredProducts.sort((a, b) =>
+            Number(a.price) - Number(b.price)
+        );
+
+    } else if (sortValue === "price-high") {
+
+        filteredProducts.sort((a, b) =>
+            Number(b.price) - Number(a.price)
+        );
+    }
 
     renderProducts(filteredProducts);
-});
-
-        categoryList.appendChild(button);
-
-    });
 }
 
-// Start displaying products
+
+// Search event
+medicineSearch.addEventListener("input", filterProducts);
+
+
+// Category dropdown event
+categoryFilter.addEventListener("change", function () {
+
+    selectedCategory = this.value;
+
+    updateActiveCategory();
+    filterProducts();
+});
+
+
+// Sort dropdown event
+sortFilter.addEventListener("change", filterProducts);
+
+
+// Start the medicines page
 renderCategories();
 renderProducts(allProducts);
