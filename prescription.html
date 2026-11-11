@@ -1,134 +1,551 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Prescription - Ghouri Pharmacy</title>
 
+    <!-- SEO Meta Tags -->
+    <title>Upload Prescription | Ghouri Pharmacy</title>
+    <meta name="description" content="Upload your doctor's prescription to Ghouri Pharmacy for pharmacist review and medicine ordering.">
+    <meta name="keywords" content="Ghouri Pharmacy, upload prescription, online pharmacy, prescription medicines, medicine ordering">
+    <meta name="author" content="Ghouri Pharmacy">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0d9488">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Upload Prescription | Ghouri Pharmacy">
+    <meta property="og:description" content="Submit your prescription to Ghouri Pharmacy for review and medicine ordering.">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Upload Prescription | Ghouri Pharmacy">
+    <meta name="twitter:description" content="Upload your prescription for pharmacist review and medicine ordering.">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .prescription-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            height: 100%;
+        }
+        .step-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #ccfbf1;
+            color: #0d9488;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        .tips-box {
+            background: #ccfbf1;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .file-preview {
+            max-width: 100%;
+            max-height: 200px;
+            display: none;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        .field-error {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .whatsapp-button {
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+        }
+        .whatsapp-button:hover {
+            background: #1da851;
+            color: white;
+        }
+        #successMessage {
+            display: none;
+        }
+    </style>
 </head>
+
+
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-none d-md-block">
-                    <i class="fa-regular fa-clock me-1"></i> Mon-Sat: 9AM - 10PM | Sun: 10AM - 6PM
-                </div>
-                <div>
-                    <a href="tel:+92XXXXXXXXXX" class="phone">
-                        <i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX
-                    </a>
-                    <span class="mx-2 d-none d-sm-inline">|</span>
-                    <span class="d-none d-sm-inline">
-                        <i class="fa-solid fa-truck me-1"></i> Home Delivery Available
-                    </span>
-                </div>
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-none d-md-block">
+                <i class="fa-regular fa-clock me-1"></i>
+                Mon-Sat: 9AM - 10PM | Sun: 10AM - 6PM
             </div>
-        </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--primary); font-size: 1.4rem;">
-                <i class="fa-solid fa-mortar-pestle"></i> Ghouri Pharmacy
-            </a>
-
-            <div class="d-flex align-items-center">
-                <a href="cart.html" class="cart-icon me-3">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-badge">0</span>
+            <div>
+                <a href="tel:+92XXXXXXXXXX" class="phone">
+                    <i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="medicines.html">Medicines</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="prescription.html">Upload Prescription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
+                <span class="mx-2 d-none d-sm-inline">|</span>
+                <span class="d-none d-sm-inline">
+                    <i class="fa-solid fa-truck me-1"></i>
+                    Home Delivery Available
+                </span>
             </div>
         </div>
-    </nav>
-
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="container">
-            <h1>Upload Prescription</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Upload Prescription</li>
-                </ol>
-            </nav>
-        </div>
-    </section>
-
-    <section class="py-5">
-        <div class="container text-center">
-            <h3>Upload Your Prescription</h3>
-            <p class="text-muted">This page will be completed in Week 5</p>
-            <p>You will be able to upload prescription image here.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <h5>Ghouri Pharmacy</h5>
-                    <p class="small">Your trusted neighborhood pharmacy for genuine medicines and health products.</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Quick Links</h5>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="medicines.html">Medicines</a>
-                    <a href="prescription.html">Upload Prescription</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="col-md-3">
-                    <h5>Opening Hours</h5>
-                    <p class="small mb-1">Mon - Sat: 9AM - 10PM</p>
-                    <p class="small">Sunday: 10AM - 6PM</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Contact</h5>
-                    <p class="small mb-1"><i class="fa-solid fa-location-dot me-1"></i> [TBD Address]</p>
-                    <p class="small mb-1"><i class="fa-solid fa-phone me-1"></i> +92 XXX XXXXXXX</p>
-                    <p class="small mb-1"><i class="fa-brands fa-whatsapp me-1"></i> +92 XXX XXXXXXX</p>
-                    <p class="small"><i class="fa-solid fa-envelope me-1"></i> [TBD Email]</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="mb-1 small">Prescription medicines are given only against a valid prescription.</p>
-                <p class="mb-0 small">© 2026 Ghouri Pharmacy. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/92XXXXXXXXXX" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <div class="back-to-top" id="backToTop">
-        <i class="fa-solid fa-arrow-up"></i>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dtist/aos.js"></script>
-    <script src="js/main.js"></script>
-    <script>AOS.init({ duration: 800, once: true });</script>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html"
+           style="color:var(--primary);font-size:1.4rem;">
+            <i class="fa-solid fa-mortar-pestle"></i> Ghouri Pharmacy
+        </a>
+
+        <div class="d-flex align-items-center">
+            <a href="cart.html" class="cart-icon me-3" aria-label="Shopping cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge">0</span>
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="medicines.html">Medicines</a></li>
+                <li class="nav-item"><a class="nav-link active" href="prescription.html">Upload Prescription</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Banner -->
+<section class="page-banner">
+    <div class="container">
+        <h1>Upload Prescription</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Upload Prescription</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2>How It Works</h2>
+            <p class="text-muted">Order your medicines in three easy steps.</p>
+        </div>
+
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="prescription-card">
+                    <div class="step-circle">1</div>
+                    <i class="fa-solid fa-file-arrow-up fa-2x mb-3 text-success"></i>
+                    <h5>Upload Your Prescription</h5>
+                    <p class="text-muted">Upload a clear photo or PDF of your prescription.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="prescription-card">
+                    <div class="step-circle">2</div>
+                    <i class="fa-solid fa-user-doctor fa-2x mb-3 text-success"></i>
+                    <h5>Pharmacist Checks It</h5>
+                    <p class="text-muted">Our pharmacist reviews it and contacts you.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="prescription-card">
+                    <div class="step-circle">3</div>
+                    <i class="fa-solid fa-truck-fast fa-2x mb-3 text-success"></i>
+                    <h5>Receive Your Medicines</h5>
+                    <p class="text-muted">Get your medicines delivered or pick them up from the store.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upload Form -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+                <div class="prescription-card">
+                    <h3 class="mb-4">Upload Your Prescription</h3>
+
+                    <div id="successMessage" class="alert alert-success" role="status">
+                        Thank you! Our pharmacist will contact you soon.
+                    </div>
+
+                    <div id="formError" class="alert alert-danger" style="display:none;" role="alert"></div>
+
+                    <form
+                        id="prescriptionForm"
+                        name="prescription-upload"
+                        method="POST"
+                        action="/prescription.html"
+                        data-netlify="true"
+                        netlify
+                        enctype="multipart/form-data"
+                        novalidate>
+
+                        <input type="hidden" name="form-name" value="prescription-upload">
+
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName"
+                                   name="fullName" required>
+                            <div class="field-error" id="nameError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-control" id="phone"
+                                   name="phone" placeholder="03XXXXXXXXX"
+                                   pattern="03[0-9]{9}" required>
+                            <div class="field-error" id="phoneError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Delivery or Store Pickup *</label>
+                            <select class="form-select" id="deliveryType"
+                                    name="deliveryType" required>
+                                <option value="">Choose an option</option>
+                                <option value="Delivery">Home Delivery</option>
+                                <option value="Store Pickup">Store Pickup</option>
+                            </select>
+                            <div class="field-error" id="deliveryError"></div>
+                        </div>
+
+                        <div class="mb-3" id="addressGroup" style="display:none;">
+                            <label for="address" class="form-label">Delivery Address *</label>
+                            <textarea class="form-control" id="address"
+                                      name="address" rows="3"
+                                      placeholder="Enter your complete address"></textarea>
+                            <div class="field-error" id="addressError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="prescriptionFile" class="form-label">
+                                Prescription File * (JPG, PNG or PDF - Max 5 MB)
+                            </label>
+                            <input type="file" class="form-control"
+                                   id="prescriptionFile" name="prescriptionFile"
+                                   accept=".jpg,.jpeg,.png,.pdf" required>
+                            <div class="field-error" id="fileError"></div>
+                            <img id="imagePreview" class="file-preview" alt="Prescription preview">
+                            <p id="pdfPreview" class="text-success mt-2"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                            <textarea class="form-control" id="notes"
+                                      name="notes" rows="3"
+                                      placeholder="Any additional instructions..."></textarea>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox"
+                                   id="confirmPrescription" name="confirmation"
+                                   value="Confirmed" required>
+                            <label class="form-check-label" for="confirmPrescription">
+                                I confirm this is a valid prescription from a doctor.
+                            </label>
+                            <div class="field-error" id="confirmError"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-2" id="submitButton">
+                            <i class="fa-solid fa-upload me-2"></i>
+                            Submit Prescription
+                        </button>
+
+                        <p class="text-muted small mt-3 text-center">
+                            <i class="fa-solid fa-lock me-1"></i>
+                            Your prescription is only used to prepare your order.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Prescription Tips -->
+            <div class="col-lg-4">
+                <div class="tips-box">
+                    <h4 class="mb-3">
+                        <i class="fa-solid fa-lightbulb me-2"></i>
+                        Prescription Tips
+                    </h4>
+                    <ul class="ps-3">
+                        <li class="mb-3">Take a clear and readable photo.</li>
+                        <li class="mb-3">Make sure the full page is visible.</li>
+                        <li class="mb-3">Doctor's name and date should be readable.</li>
+                        <li class="mb-3">Avoid blurry or dark pictures.</li>
+                        <li>Upload only JPG, PNG or PDF files under 5 MB.</li>
+                    </ul>
+                </div>
+
+                <div class="prescription-card mt-4 text-center">
+                    <i class="fa-brands fa-whatsapp fa-3x text-success mb-3"></i>
+                    <h5>Prefer WhatsApp?</h5>
+                    <p class="text-muted">Send your prescription photo directly to us.</p>
+                    <!-- Replace with mentor's actual WhatsApp number -->
+                    <a href="https://wa.me/92XXXXXXXXXX"
+                       class="whatsapp-button" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-whatsapp me-2"></i>
+                        Send Prescription
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <h5>Ghouri Pharmacy</h5>
+                <p class="small">Your trusted neighborhood pharmacy for genuine medicines and health products.</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Quick Links</h5>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="medicines.html">Medicines</a>
+                <a href="prescription.html">Upload Prescription</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Opening Hours</h5>
+                <p class="small mb-1">Mon - Sat: 9AM - 10PM</p>
+                <p class="small">Sunday: 10AM - 6PM</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Contact</h5>
+                <p class="small mb-1">[TBD Address]</p>
+                <p class="small mb-1">+92 XXX XXXXXXX</p>
+                <p class="small">[TBD Email]</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="mb-1 small">Prescription medicines are given only against a valid prescription.</p>
+            <p class="mb-0 small">© 2026 Ghouri Pharmacy. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/92XXXXXXXXXX"
+   class="whatsapp-float" target="_blank" rel="noopener"
+   aria-label="Contact us on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<div class="back-to-top" id="backToTop" role="button" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+AOS.init({ duration: 800, once: true });
+
+const form = document.getElementById("prescriptionForm");
+const fileInput = document.getElementById("prescriptionFile");
+const imagePreview = document.getElementById("imagePreview");
+const pdfPreview = document.getElementById("pdfPreview");
+const deliveryType = document.getElementById("deliveryType");
+const addressGroup = document.getElementById("addressGroup");
+const addressInput = document.getElementById("address");
+
+function showError(id, message) {
+    document.getElementById(id).textContent = message;
+}
+
+function clearErrors() {
+    document.querySelectorAll(".field-error").forEach(el => {
+        el.textContent = "";
+    });
+    document.getElementById("formError").style.display = "none";
+}
+
+// Delivery address condition
+deliveryType.addEventListener("change", function () {
+    const isDelivery = this.value === "Delivery";
+    addressGroup.style.display = isDelivery ? "block" : "none";
+    addressInput.required = isDelivery;
+
+    if (!isDelivery) {
+        addressInput.value = "";
+        showError("addressError", "");
+    }
+});
+
+// File preview and validation
+fileInput.addEventListener("change", function () {
+    imagePreview.style.display = "none";
+    imagePreview.src = "";
+    pdfPreview.textContent = "";
+    showError("fileError", "");
+
+    const file = this.files[0];
+    if (!file) return;
+
+    const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+    const maxSize = 5 * 1024 * 1024;
+
+    if (!allowedTypes.includes(file.type)) {
+        showError("fileError", "Only JPG, PNG or PDF files are allowed.");
+        this.value = "";
+        return;
+    }
+
+    if (file.size > maxSize) {
+        showError("fileError", "File size must not exceed 5 MB.");
+        this.value = "";
+        return;
+    }
+
+    if (file.type === "application/pdf") {
+        pdfPreview.textContent = "Selected PDF: " + file.name;
+    } else {
+        imagePreview.src = URL.createObjectURL(file);
+        imagePreview.style.display = "block";
+    }
+});
+
+// Submit and validate
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    clearErrors();
+
+    const name = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const file = fileInput.files[0];
+    const address = addressInput.value.trim();
+    const confirmation = document.getElementById("confirmPrescription");
+
+    let valid = true;
+
+    if (name.length < 2) {
+        showError("nameError", "Please enter your full name.");
+        valid = false;
+    }
+
+    if (!/^03[0-9]{9}$/.test(phone)) {
+        showError("phoneError", "Enter a valid Pakistani mobile number (03XXXXXXXXX).");
+        valid = false;
+    }
+
+    if (!deliveryType.value) {
+        showError("deliveryError", "Please select delivery or store pickup.");
+        valid = false;
+    }
+
+    if (deliveryType.value === "Delivery" && address.length < 5) {
+        showError("addressError", "Please enter your complete delivery address.");
+        valid = false;
+    }
+
+    if (!file) {
+        showError("fileError", "Please select your prescription file.");
+        valid = false;
+    } else {
+        const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+        if (!allowedTypes.includes(file.type) || file.size > 5 * 1024 * 1024) {
+            showError("fileError", "Please select a valid JPG, PNG or PDF file under 5 MB.");
+            valid = false;
+        }
+    }
+
+    if (!confirmation.checked) {
+        showError("confirmError", "Please confirm your prescription.");
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    const button = document.getElementById("submitButton");
+    button.disabled = true;
+    button.textContent = "Submitting...";
+
+    try {
+        const response = await fetch("/", {
+            method: "POST",
+            body: new FormData(form)
+        });
+
+        if (!response.ok) throw new Error("Submission failed");
+
+        form.reset();
+        imagePreview.style.display = "none";
+        pdfPreview.textContent = "";
+        addressGroup.style.display = "none";
+        addressInput.required = false;
+
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("successMessage").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    } catch (error) {
+        const errorBox = document.getElementById("formError");
+        errorBox.textContent = "Submission failed. Please try again or contact us.";
+        errorBox.style.display = "block";
+    } finally {
+        button.disabled = false;
+        button.innerHTML = '<i class="fa-solid fa-upload me-2"></i> Submit Prescription';
+    }
+});
+</script>
+
 </body>
 </html>
